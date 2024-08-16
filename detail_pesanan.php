@@ -1,13 +1,14 @@
-<?php 
-    include('koneksi.php');
-    session_start();
-      if(!isset($_SESSION['login_user'])) {
-        header("location: login.php");
-      }else{
+<?php
+include('koneksi.php');
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header("location: login.php");
+} else {
 ?>
 
-<!doctype html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,24 +22,25 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
-    <title>History Cafe</title>
+    <title>Abz Cafe</title>
   </head>
-  <body>
-  <!-- Jumbotron -->
-      <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
-          <h1 class="display-4"><span class="font-weight-bold">History Cafe</span></h1>
-          <hr>
-          <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
-          Enjoy Your Meal</p>
-        </div>
-      </div>
-  <!-- Akhir Jumbotron -->
 
-  <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  bg-dark">
-        <div class="container">
-        <a class="navbar-brand text-white" href="admin.php"><strong>History</strong> Cafe</a>
+  <body>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-4"><span class="font-weight-bold">Abz Cafe</span></h1>
+        <hr>
+        <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br>
+          Enjoy Your Meal</p>
+      </div>
+    </div>
+    <!-- Akhir Jumbotron -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="admin.php"><strong>Abz</strong> Cafe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,16 +61,16 @@
             </li>
           </ul>
         </div>
-       </div> 
-      </nav>
-  <!-- Akhir Navbar -->
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
 
-  <!-- Menu -->
+    <!-- Menu -->
     <div class="container">
       <div class="judul-pesanan mt-5">
-       
+
         <h3 class="text-center font-weight-bold">DATA PESANAN PELANGGAN</h3>
-        
+
       </div>
       <table class="table table-bordered" id="example">
         <thead class="thead-light">
@@ -82,73 +84,72 @@
           </tr>
         </thead>
         <tbody>
-          <?php $nomor=1; ?>
+          <?php $nomor = 1; ?>
           <?php $totalbelanja = 0; ?>
-          <?php 
-              $ambil = $koneksi->query("SELECT * FROM pemesanan_produk JOIN produk ON pemesanan_produk.id_menu=produk.id_menu 
+          <?php
+          $ambil = $koneksi->query("SELECT * FROM pemesanan_produk JOIN produk ON pemesanan_produk.id_menu=produk.id_menu 
                 WHERE pemesanan_produk.id_pemesanan='$_GET[id]'");
-           ?>
-           <?php while ($pecah=$ambil->fetch_assoc()) { ?>
-           <?php $subharga1=$pecah['harga']*$pecah['jumlah']; ?>
-          <tr>
-            <th scope="row"><?php echo $nomor; ?></th>
-            <td><?php echo $pecah['id_pemesanan_produk']; ?></td>
-            <td><?php echo $pecah['nama_menu']; ?></td>
-            <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
-            <td><?php echo $pecah['jumlah']; ?></td>
-            <td>
-              Rp. <?php echo number_format($pecah['harga']*$pecah['jumlah']); ?>
-            </td>
-          </tr>
-          <?php $nomor++; ?>
-          <?php $totalbelanja+=$subharga1; ?>
+          ?>
+          <?php while ($pecah = $ambil->fetch_assoc()) { ?>
+            <?php $subharga1 = $pecah['harga'] * $pecah['jumlah']; ?>
+            <tr>
+              <th scope="row"><?php echo $nomor; ?></th>
+              <td><?php echo $pecah['id_pemesanan_produk']; ?></td>
+              <td><?php echo $pecah['nama_menu']; ?></td>
+              <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
+              <td><?php echo $pecah['jumlah']; ?></td>
+              <td>
+                Rp. <?php echo number_format($pecah['harga'] * $pecah['jumlah']); ?>
+              </td>
+            </tr>
+            <?php $nomor++; ?>
+            <?php $totalbelanja += $subharga1; ?>
           <?php } ?>
         </tbody>
-         <tfoot>
+        <tfoot>
           <tr>
             <th colspan="5">Total Bayar</th>
             <th>Rp. <?php echo number_format($totalbelanja) ?></th>
           </tr>
         </tfoot>
       </table><br>
-      
+
       <form method="POST" action="">
         <a href="pesanan.php" class="btn btn-success btn-sm">Kembali</a>
         <button class="btn btn-primary btn-sm" name="bayar">Konfirmasi Pembayaran</button>
-      </form>  
-      <?php 
-        if(isset($_POST["bayar"]))
-        {
-          echo "<script>alert('Pesanan Telah Dibayar !');</script>";
-          echo "<script>location= 'pesanan.php'</script>";
-        }
+      </form>
+      <?php
+      if (isset($_POST["bayar"])) {
+        echo "<script>alert('Pesanan Telah Dibayar !');</script>";
+        echo "<script>location= 'pesanan.php'</script>";
+      }
       ?>
-     
+
     </div>
-  <!-- Akhir Menu -->
-    
+    <!-- Akhir Menu -->
 
-  <!-- Awal Footer -->
-      <hr class="footer">
-      <div class="container">
-        <div class="row footer-body">
-          <div class="col-md-6">
+
+    <!-- Awal Footer -->
+    <hr class="footer">
+    <div class="container">
+      <div class="row footer-body">
+        <div class="col-md-6">
           <div class="copyright">
-            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2020 -  Designed by Akbar Jumaris</p>
+            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 - Designed by Lord Abz</p>
           </div>
-          </div>
-
-          <div class="col-md-6 d-flex justify-content-end">
-          <div class="icon-contact">
-          <label class="font-weight-bold">Follow Us </label>
-          <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
-          <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
-          <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
         </div>
+
+        <div class="col-md-6 d-flex justify-content-end">
+          <div class="icon-contact">
+            <label class="font-weight-bold">Follow Us </label>
+            <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
+            <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
+            <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
           </div>
         </div>
       </div>
-  <!-- Akhir Footer -->
+    </div>
+    <!-- Akhir Footer -->
 
 
 
@@ -166,9 +167,10 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
       $(document).ready(function() {
-          $('#example').DataTable();
-      } );
+        $('#example').DataTable();
+      });
     </script>
   </body>
-</html>
+
+  </html>
 <?php } ?>

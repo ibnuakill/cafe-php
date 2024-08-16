@@ -1,12 +1,13 @@
-<?php 
-    session_start();
-      if(!isset($_SESSION['login_user'])) {
-        header("location: login.php");
-      }else{
+<?php
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header("location: login.php");
+} else {
 ?>
 
-<!doctype html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,26 +19,27 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
 
-    <title>History Cafe</title>
+    <title>Abz Cafe</title>
   </head>
+
   <body>
 
-  <!-- Jumbotron -->
-      <div class=" jumbotron-fluid text-center"> 
-        <div class="container">
-          <h1 class="display-4"><span class="font-weight-bold">ABZ CAFE </span></h1>
-          <hr>
-          <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
+    <!-- Jumbotron -->
+    <div class=" jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-4"><span class="font-weight-bold">ABZ CAFE</span></h1>
+        <hr>
+        <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br>
           Enjoy Your Meal</p>
-        </div>
       </div>
-      <br>
-  <!-- Akhir Jumbotron -->
+    </div>
+    <br>
+    <!-- Akhir Jumbotron -->
 
-  <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  bg-dark">
-        <div class="container">
-        <a class="navbar-brand text-white" href="admin.php"><strong>Abz</strong> Cafe</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="admin.php"><strong>Abz</strong>Cafe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,61 +60,62 @@
             </li>
           </ul>
         </div>
-       </div> 
-      </nav>
-  <!-- Akhir Navbar -->
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
 
-  <!-- Menu -->    
-      <div class="container">
-        <div class="judul text-center mt-5">
-          <h3 class="font-weight-bold">HISTORY CAFE</h3>
-          <h5>Payakumbuh, Lima Pulluh Kota, Sumatera Barat
-          <br>Buka Jam <strong>16:00 - 23:00</strong></h5>
-        </div>
+    <!-- Menu -->
+    <div class="container">
+      <div class="judul text-center mt-5">
+        <h3 class="font-weight-bold">HISTORY CAFE</h3>
+        <h5>Cirebon, West Java <br>Buka Jam <br>
+          <strong>16:00 - 23:00</strong>
+        </h5>
+      </div>
 
-        <div class="row mb-5 mt-5 ">
-          <div class="col-md-6 d-flex justify-content-end">
-            <div class="card bg-dark text-white border-light">
-              <img src="images/background/bg10.jpg" class="card-img" alt="Lihat Daftar Menu">
-              <div class="card-img-overlay mt-5 text-center">
-               <a href="daftar_menu.php" class="btn btn-primary">LIHAT DAFTAR MENU</a>
-              </div>
+      <div class="row mb-5 mt-5 ">
+        <div class="col-md-6 d-flex justify-content-end">
+          <div class="card bg-dark text-white border-light">
+            <img src="images/background/bg10.jpg" class="card-img" alt="Lihat Daftar Menu">
+            <div class="card-img-overlay mt-5 text-center">
+              <a href="daftar_menu.php" class="btn btn-primary">LIHAT DAFTAR MENU</a>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-6 d-flex justify-content-start">
-            <div class="card bg-dark text-white border-light">
-              <img src="images/background/bg14.jpg" class="card-img" alt="Lihat Pesanan">
-              <div class="card-img-overlay mt-5 text-center">
-               <a href="pesanan.php" class="btn btn-primary">LIHAT PESANAN</a>
-              </div>
+        <div class="col-md-6 d-flex justify-content-start">
+          <div class="card bg-dark text-white border-light">
+            <img src="images/background/bg14.jpg" class="card-img" alt="Lihat Pesanan">
+            <div class="card-img-overlay mt-5 text-center">
+              <a href="pesanan.php" class="btn btn-primary">LIHAT PESANAN</a>
             </div>
           </div>
         </div>
       </div>
-  <!-- Akhir Menu -->
+    </div>
+    <!-- Akhir Menu -->
 
-  <!-- Awal Footer -->
-      <hr class="footer">
-      <div class="container">
-        <div class="row footer-body">
-          <div class="col-md-6">
+    <!-- Awal Footer -->
+    <hr class="footer">
+    <div class="container">
+      <div class="row footer-body">
+        <div class="col-md-6">
           <div class="copyright">
-            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 -  Designed Lord Abz</p>
+            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 - Designed Lord Abz</p>
           </div>
-          </div>
-
-          <div class="col-md-6 d-flex justify-content-end">
-          <div class="icon-contact">
-          <label class="font-weight-bold">Follow Us </label>
-          <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
-          <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
-          <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
         </div>
+
+        <div class="col-md-6 d-flex justify-content-end">
+          <div class="icon-contact">
+            <label class="font-weight-bold">Follow Us </label>
+            <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
+            <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
+            <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
           </div>
         </div>
       </div>
-  <!-- Akhir Footer -->
+    </div>
+    <!-- Akhir Footer -->
 
 
     <!-- Optional JavaScript -->
@@ -123,5 +126,6 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
   </body>
-</html>
+
+  </html>
 <?php } ?>

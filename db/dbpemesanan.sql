@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jul 2022 pada 02.54
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 8.1.1
+-- Host: localhost:3306
+-- Generation Time: Aug 16, 2024 at 04:30 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,17 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemesanan`
+-- Table structure for table `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
-  `id_pemesanan` int(50) NOT NULL,
+  `id_pemesanan` int NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
-  `total_belanja` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `total_belanja` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `pemesanan`
+-- Dumping data for table `pemesanan`
 --
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `tanggal_pemesanan`, `total_belanja`) VALUES
@@ -44,18 +44,18 @@ INSERT INTO `pemesanan` (`id_pemesanan`, `tanggal_pemesanan`, `total_belanja`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemesanan_produk`
+-- Table structure for table `pemesanan_produk`
 --
 
 CREATE TABLE `pemesanan_produk` (
-  `id_pemesanan_produk` int(50) NOT NULL,
-  `id_pemesanan` int(50) NOT NULL,
+  `id_pemesanan_produk` int NOT NULL,
+  `id_pemesanan` int NOT NULL,
   `id_menu` varchar(50) NOT NULL,
-  `jumlah` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `jumlah` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `pemesanan_produk`
+-- Dumping data for table `pemesanan_produk`
 --
 
 INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pemesanan`, `id_menu`, `jumlah`) VALUES
@@ -93,20 +93,20 @@ INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pemesanan`, `id_menu`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
-  `id_menu` int(50) NOT NULL,
+  `id_menu` int NOT NULL,
   `nama_menu` varchar(50) NOT NULL,
   `jenis_menu` varchar(50) NOT NULL,
-  `stok` int(50) NOT NULL,
-  `harga` int(50) NOT NULL,
+  `stok` int NOT NULL,
+  `harga` int NOT NULL,
   `gambar` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id_menu`, `nama_menu`, `jenis_menu`, `stok`, `harga`, `gambar`) VALUES
@@ -130,11 +130,11 @@ INSERT INTO `produk` (`id_menu`, `nama_menu`, `jenis_menu`, `stok`, `harga`, `ga
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id_user` int(25) NOT NULL,
+  `id_user` int NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `nama_lengkap` varchar(25) NOT NULL,
@@ -143,72 +143,71 @@ CREATE TABLE `user` (
   `alamat` varchar(25) NOT NULL,
   `hp` varchar(25) NOT NULL,
   `status` enum('admin','user','','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_lengkap`, `jenis_kelamin`, `tanggal_lahir`, `alamat`, `hp`, `status`) VALUES
-(1, 'akbar', 'jumaris', 'Akbar Jumaris', 'Laki-Laki', '2002-02-22', 'Gadut', '0823xxxxxxx', 'admin'),
-(2, 'anto', 'anto12', 'Tri Gianto', 'Laki-Laki', '1999-01-11', 'Halaban', '0852xxxxxxxx', 'user'),
-(3, 'iwak', 'iwak123', 'Kurmiawan', 'Laki-Laki', '1998-05-19', 'Situjuah Koto', '0891xxxxxxxx', 'user');
+(1, 'admin', 'admin', 'Ibnu Akil', 'Laki-Laki', '2002-02-22', 'Jl Baru', '0823xxxxxxx', 'admin'),
+(2, 'user', 'user', 'Raffli', 'Laki-Laki', '1999-01-11', 'Dukupuntang', '0852xxxxxxxx', 'user');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `pemesanan`
+-- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`);
 
 --
--- Indeks untuk tabel `pemesanan_produk`
+-- Indexes for table `pemesanan_produk`
 --
 ALTER TABLE `pemesanan_produk`
   ADD PRIMARY KEY (`id_pemesanan_produk`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `pemesanan`
+-- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_pemesanan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT untuk tabel `pemesanan_produk`
+-- AUTO_INCREMENT for table `pemesanan_produk`
 --
 ALTER TABLE `pemesanan_produk`
-  MODIFY `id_pemesanan_produk` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_pemesanan_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_menu` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

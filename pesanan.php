@@ -1,13 +1,14 @@
-<?php 
-    include('koneksi.php');
-    session_start();
-      if(!isset($_SESSION['login_user'])) {
-        header("location: login.php");
-      }else{
+<?php
+include('koneksi.php');
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header("location: login.php");
+} else {
 ?>
 
-<!doctype html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,24 +22,25 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
-    <title>History Cafe</title>
+    <title>Abz Cafe</title>
   </head>
-  <body>
-  <!-- Jumbotron -->
-      <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
-          <h1 class="display-4"><span class="font-weight-bold">History Cafe</span></h1>
-          <hr>
-          <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
-          Enjoy Your Meal</p>
-        </div>
-      </div>
-  <!-- Akhir Jumbotron -->
 
-  <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  bg-dark">
-        <div class="container">
-        <a class="navbar-brand text-white" href="admin.php"><strong>History</strong> Cafe</a>
+  <body>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-4"><span class="font-weight-bold">Abz Cafe</span></h1>
+        <hr>
+        <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br>
+          Enjoy Your Meal</p>
+      </div>
+    </div>
+    <!-- Akhir Jumbotron -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="admin.php"><strong>Abz</strong> Cafe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,16 +61,16 @@
             </li>
           </ul>
         </div>
-       </div> 
-      </nav>
-  <!-- Akhir Navbar -->
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
 
-  <!-- Menu -->
+    <!-- Menu -->
     <div class="container">
       <div class="judul-pesanan mt-5">
-       
+
         <h3 class="text-center font-weight-bold">DATA PESANAN PELANGGAN</h3>
-        
+
       </div>
       <table class="table table-bordered" id="example">
         <thead class="thead-light">
@@ -81,55 +83,55 @@
           </tr>
         </thead>
         <tbody>
-          <?php $nomor=1; ?>
-          <?php 
-            $ambil = mysqli_query($koneksi, 'SELECT * FROM pemesanan');
-            $result = mysqli_fetch_all($ambil, MYSQLI_ASSOC);
+          <?php $nomor = 1; ?>
+          <?php
+          $ambil = mysqli_query($koneksi, 'SELECT * FROM pemesanan');
+          $result = mysqli_fetch_all($ambil, MYSQLI_ASSOC);
           ?>
-          <?php foreach($result as $result) : ?>
+          <?php foreach ($result as $result) : ?>
 
-          <tr>
-            <th scope="row"><?php echo $nomor; ?></th>
-            <td><?php echo $result["id_pemesanan"]; ?></td>
-            <td><?php echo $result["tanggal_pemesanan"]; ?></td>
-            <td>Rp. <?php echo number_format($result["total_belanja"]); ?></td>
-            <td>
-              
-              <a href="detail_pesanan.php?id=<?php echo $result['id_pemesanan'] ?>" class="badge badge-primary">Detail</a>
-             
+            <tr>
+              <th scope="row"><?php echo $nomor; ?></th>
+              <td><?php echo $result["id_pemesanan"]; ?></td>
+              <td><?php echo $result["tanggal_pemesanan"]; ?></td>
+              <td>Rp. <?php echo number_format($result["total_belanja"]); ?></td>
+              <td>
 
-              <a href="clear_pesanan.php?id=<?php echo $result['id_pemesanan'] ?>" class="badge badge-danger">Hapus Data</a>
-            </td>
-          </tr>
-          <?php $nomor++; ?>
+                <a href="detail_pesanan.php?id=<?php echo $result['id_pemesanan'] ?>" class="badge badge-primary">Detail</a>
+
+
+                <a href="clear_pesanan.php?id=<?php echo $result['id_pemesanan'] ?>" class="badge badge-danger">Hapus Data</a>
+              </td>
+            </tr>
+            <?php $nomor++; ?>
           <?php endforeach; ?>
         </tbody>
       </table>
     </div>
-  <!-- Akhir Menu -->
-    
+    <!-- Akhir Menu -->
 
-  <!-- Awal Footer -->
-      <hr class="footer">
-      <div class="container">
-        <div class="row footer-body">
-          <div class="col-md-6">
+
+    <!-- Awal Footer -->
+    <hr class="footer">
+    <div class="container">
+      <div class="row footer-body">
+        <div class="col-md-6">
           <div class="copyright">
-            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2020 -  Designed Lord Abz</p>
+            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 - Designed Lord Abz</p>
           </div>
-          </div>
-
-          <div class="col-md-6 d-flex justify-content-end">
-          <div class="icon-contact">
-          <label class="font-weight-bold">Follow Us </label>
-          <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
-          <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
-          <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
         </div>
+
+        <div class="col-md-6 d-flex justify-content-end">
+          <div class="icon-contact">
+            <label class="font-weight-bold">Follow Us </label>
+            <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
+            <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
+            <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
           </div>
         </div>
       </div>
-  <!-- Akhir Footer -->
+    </div>
+    <!-- Akhir Footer -->
 
 
 
@@ -147,9 +149,10 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
       $(document).ready(function() {
-          $('#example').DataTable();
-      } );
+        $('#example').DataTable();
+      });
     </script>
   </body>
-</html>
+
+  </html>
 <?php } ?>

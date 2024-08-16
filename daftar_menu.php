@@ -1,12 +1,13 @@
-<?php 
-    session_start();
-      if(!isset($_SESSION['login_user'])) {
-        header("location: login.php");
-      }else{
+<?php
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header("location: login.php");
+} else {
 ?>
 
-<!doctype html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,24 +19,25 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
 
-    <title>History Cafe</title>
+    <title>Abz Cafe</title>
   </head>
-  <body>
-  <!-- Jumbotron -->
-      <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
-          <h1 class="display-4"><span class="font-weight-bold">History Cafe</span></h1>
-          <hr>
-          <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
-          Enjoy Your Meal</p>
-        </div>
-      </div>
-  <!-- Akhir Jumbotron -->
 
-  <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  bg-dark">
-        <div class="container">
-        <a class="navbar-brand text-white" href="admin.php"><strong>History</strong> Cafe</a>
+  <body>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-4"><span class="font-weight-bold">Abz Cafe</span></h1>
+        <hr>
+        <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br>
+          Enjoy Your Meal</p>
+      </div>
+    </div>
+    <!-- Akhir Jumbotron -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg  bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="admin.php"><strong>Abz</strong> Cafe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,67 +58,67 @@
             </li>
           </ul>
         </div>
-       </div> 
-      </nav>
-  <!-- Akhir Navbar -->
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
 
-  <!-- Menu -->
-      <div class="container">
-        <a href="tambah_menu.php" class="btn btn-success mt-3">TAMBAH DAFTAR MENU</a>
-        <div class="row">
+    <!-- Menu -->
+    <div class="container">
+      <a href="tambah_menu.php" class="btn btn-success mt-3">TAMBAH DAFTAR MENU</a>
+      <div class="row">
 
-          <?php 
+        <?php
 
-          include('koneksi.php');
+        include('koneksi.php');
 
-          $query = mysqli_query($koneksi, 'SELECT * FROM produk');
-          $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
-            
+        $query = mysqli_query($koneksi, 'SELECT * FROM produk');
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
-          ?>
 
-          <?php foreach($result as $result) : ?>
+        ?>
+
+        <?php foreach ($result as $result) : ?>
 
           <div class="col-md-3 mt-4">
             <div class="card brder-dark">
               <img src="upload/<?php echo $result['gambar'] ?>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title font-weight-bold"><?php echo $result['nama_menu'] ?></h5>
-               <label class="card-text harga"><strong>Rp.</strong> <?php echo number_format($result['harga']); ?></label><br>
+                <label class="card-text harga"><strong>Rp.</strong> <?php echo number_format($result['harga']); ?></label><br>
                 <a href="edit_menu.php?id_menu=<?php echo $result['id_menu']  ?>" class="btn btn-success btn-sm btn-block">EDIT</a>
 
                 <a href="hapus_menu.php?id_menu=<?php echo $result['id_menu']  ?>" class="btn btn-danger btn-sm btn-block text-light">HAPUS</a>
               </div>
             </div>
           </div>
-              <?php endforeach; ?>
-            </div>
-          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
 
-          
-  <!-- Akhir Menu -->
 
-  <!-- Awal Footer -->
-      <hr class="footer">
-      <div class="container">
-        <div class="row footer-body">
-          <div class="col-md-6">
+    <!-- Akhir Menu -->
+
+    <!-- Awal Footer -->
+    <hr class="footer">
+    <div class="container">
+      <div class="row footer-body">
+        <div class="col-md-6">
           <div class="copyright">
-            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2020 -  Designed by Lord Abz</p>
+            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 - Designed by Lord Abz</p>
           </div>
-          </div>
-
-          <div class="col-md-6 d-flex justify-content-end">
-          <div class="icon-contact">
-          <label class="font-weight-bold">Follow Us </label>
-          <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
-          <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
-          <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
         </div>
+
+        <div class="col-md-6 d-flex justify-content-end">
+          <div class="icon-contact">
+            <label class="font-weight-bold">Follow Us </label>
+            <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
+            <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
+            <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
           </div>
         </div>
       </div>
-  <!-- Akhir Footer -->
+    </div>
+    <!-- Akhir Footer -->
 
 
 
@@ -130,5 +132,6 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
   </body>
-</html>
+
+  </html>
 <?php } ?>
