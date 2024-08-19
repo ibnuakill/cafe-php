@@ -87,7 +87,7 @@ if (!isset($_SESSION['login_user'])) {
                 <label class="card-text harga"><strong>Rp.</strong> <?php echo number_format($result['harga']); ?></label><br>
                 <a href="edit_menu.php?id_menu=<?php echo $result['id_menu']  ?>" class="btn btn-success btn-sm btn-block">EDIT</a>
 
-                <a href="hapus_menu.php?id_menu=<?php echo $result['id_menu']  ?>" class="btn btn-danger btn-sm btn-block text-light">HAPUS</a>
+                <a href="hapus_menu.php?id_menu=<?php echo $result['id_menu']  ?>" class="btn btn-danger btn-sm btn-block text-light" onclick="return confirm('Apakah anda yakin ingin menghapus menu ini?')">HAPUS</a>
               </div>
             </div>
           </div>
@@ -98,27 +98,7 @@ if (!isset($_SESSION['login_user'])) {
 
     <!-- Akhir Menu -->
 
-    <!-- Awal Footer -->
-    <hr class="footer">
-    <div class="container">
-      <div class="row footer-body">
-        <div class="col-md-6">
-          <div class="copyright">
-            <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 - Designed by Lord Abz</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 d-flex justify-content-end">
-          <div class="icon-contact">
-            <label class="font-weight-bold">Follow Us </label>
-            <a href="#"><img src="images/icon/fb.png" class="mr-3 ml-4" data-toggle="tooltip" title="Facebook"></a>
-            <a href="#"><img src="images/icon/ig.png" class="mr-3" data-toggle="tooltip" title="Instagram"></a>
-            <a href="#"><img src="images/icon/twitter.png" class="" data-toggle="tooltip" title="Twitter"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Akhir Footer -->
+    <?php include('footer.php'); ?>
 
 
 
